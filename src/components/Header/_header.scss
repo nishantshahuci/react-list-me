@@ -1,0 +1,41 @@
+.header {
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom right,
+    $color-primary,
+    $color-secondary
+  );
+  background-size: cover;
+  position: relative;
+
+  &__text-box {
+    width: 100%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    text-align: center;
+  }
+
+  &-text {
+    text-transform: uppercase;
+
+    &__main {
+      display: inline-block;
+      font-size: 6rem;
+      font-weight: 300;
+      color: $color-grey-lighter;
+      letter-spacing: 2.5rem;
+      padding-left: 2.5rem;
+    }
+
+    &__sub {
+      display: inline-block;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: $color-grey-light;
+      letter-spacing: 2.3rem;
+      padding-left: 2.3rem;
+    }
+  }
+}

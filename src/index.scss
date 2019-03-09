@@ -1,16 +1,4 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
+@import './sass/base';
+@import './sass/variables';
 
-html {
-  // defines what 1 rem is
-  font-size: 62.5%; // 1rem = 10px
-}
-
-body {
-  box-sizing: border-box;
-}
+@import './components/Header/header';
