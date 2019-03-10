@@ -1,0 +1,124 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    color: $color-grey;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 10rem;
+    padding: 1.5rem 4rem;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  &--light {
+    background-color: $color-grey-light;
+  }
+
+  &--lighter {
+    background-color: $color-grey-lighter;
+  }
+
+  &--hover-white {
+    &:hover {
+      background-color: $color-white;
+      box-shadow: 0 1rem 3rem rgba($color-black, 0.3);
+    }
+
+    &:active,
+    &:focus {
+      background-color: $color-white;
+      box-shadow: 0 0.5rem 1.5rem rgba($color-black, 0.3);
+    }
+  }
+
+  &--hover-gradient {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      border-radius: 10rem;
+      background-image: linear-gradient(
+        to right,
+        $color-primary,
+        $color-secondary
+      );
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      background-color: transparent;
+      box-shadow: 0 1rem 3rem rgba($color-black, 0.3);
+
+      &::before {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: 0 0.5rem 1.5rem rgba($color-black, 0.3);
+    }
+  }
+
+  &--text-gradient {
+    background-image: linear-gradient(
+      to right,
+      $color-primary-light,
+      $color-primary-dark
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: all 0.2s;
+  }
+
+  &--hover-gradient:hover > &--text-gradient {
+    color: $color-grey-lighter;
+  }
+
+  &--link {
+    padding: 0 0 0.5rem 0;
+    text-transform: initial;
+    background-color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-image: linear-gradient(
+        to right,
+        $color-primary,
+        $color-secondary
+      );
+      transition: all 0.2s;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+      color: $color-secondary;
+    }
+
+    &:hover::after,
+    &:active::after,
+    &:focus::after {
+      width: 100%;
+    }
+  }
+}

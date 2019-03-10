@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from '../Button/Button';
+
 const Login = () => {
   return (
     <div className="login">
@@ -24,12 +26,12 @@ const Login = () => {
           <div className="login__form-label">Password</div>
         </div>
         <div className="login__links">
-          <a className="login__links--register" href="">
-            Need an account?
-          </a>
-          <button className="login__links--submit" type="submit">
-            Submit
-          </button>
+          <Button btnClasses="btn btn--link" btnText="Need an account?" />
+          <Button
+            btnClasses="btn btn--lighter btn--hover-gradient"
+            btnText="Submit"
+            btnTextClasses="btn--text-gradient"
+          />
         </div>
       </form>
     </div>

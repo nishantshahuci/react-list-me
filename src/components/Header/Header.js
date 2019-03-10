@@ -1,6 +1,6 @@
 import React from 'react';
 
-//import './_header.scss';
+import Button from '../Button/Button';
 
 const Header = () => {
   return (
@@ -11,9 +11,13 @@ const Header = () => {
           Your first step to organization
         </span>
       </h1>
-      <a href="/" className="header__button">
-        <span className="header__button-text">Get started</span>
-      </a>
+      <div className="header__button">
+        <Button
+          btnClasses="btn btn--lighter btn--hover-white"
+          btnText="Get started"
+          btnTextClasses="btn--text-gradient"
+        />
+      </div>
     </div>
   );
 };
