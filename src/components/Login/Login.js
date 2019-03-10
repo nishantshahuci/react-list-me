@@ -24,10 +24,10 @@ const Login = () => {
           <div className="login__form-label">Password</div>
         </div>
         <div className="login__links">
-          <a className="login__link" href="">
+          <a className="login__links--register" href="">
             Need an account?
           </a>
-          <button className="login__link" type="submit">
+          <button className="login__links--submit" type="submit">
             Submit
           </button>
         </div>
