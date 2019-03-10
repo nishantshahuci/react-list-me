@@ -62,8 +62,8 @@
     &:hover {
       background-image: linear-gradient(
         to right,
-        $color-primary-light,
-        $color-primary-dark
+        $color-primary,
+        $color-secondary
       );
       background-clip: text;
       -webkit-background-clip: text;
