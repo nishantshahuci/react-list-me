@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -6,7 +6,7 @@ import Dashboard from '../Dashboard/Dashboard';
 
 const App = () => {
   return (
-    <Fragment>
+    <div className="app">
       <Navbar />
       <Dashboard
         lists={[
@@ -21,7 +21,7 @@ const App = () => {
           }
         ]}
       />
-    </Fragment>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@
     text-decoration: none;
     border: none;
     border-radius: 10rem;
-    padding: 1.5rem 4rem;
+    padding: 1rem 3rem;
     outline: none;
     cursor: pointer;
     position: relative;
@@ -59,6 +59,7 @@
     &:hover {
       background-color: transparent;
       box-shadow: 0 1rem 3rem rgba($color-black, 0.3);
+      z-index: 1;
 
       &::before {
         visibility: visible;
