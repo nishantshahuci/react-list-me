@@ -16,7 +16,7 @@ body {
   font-family: Lato, sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(
     to bottom right,
     $color-primary,
