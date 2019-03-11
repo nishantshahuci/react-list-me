@@ -7,11 +7,11 @@ class Dashboard extends Component {
   renderInitial = () => {
     return (
       <Fragment>
-        <h2 className="dashboard__header--main">You don't have any lists!</h2>
-        <h3 className="dashboard__header--sub">
+        <h2 className="dashboard__initial-main">You don't have any lists!</h2>
+        <h3 className="dashboard__initial-sub">
           Get started by clicking the button below
         </h3>
-        <div className="dashboard__button">
+        <div className="dashboard__initial-button">
           <Button
             btnClasses="btn btn--lighter btn--hover-gradient"
             btnText="Create"
@@ -22,11 +22,11 @@ class Dashboard extends Component {
     );
   };
 
-  renderLists = () => {
+  renderHeader = () => {
     return (
-      <div className="dashboard__view">
-        <h2 className="dashboard__view-title">Lists</h2>
-        <div className="dashboard__view-button">
+      <div className="dashboard__header">
+        <h2 className="dashboard__header-title">Lists</h2>
+        <div className="dashboard__header-button">
           <Button
             btnClasses="btn btn--lighter btn--hover-gradient"
             btnText="Create"
@@ -37,9 +37,22 @@ class Dashboard extends Component {
     );
   };
 
+  renderLists = () => {
+    return <div>lists</div>;
+  };
+
+  renderDashboard = () => {
+    return (
+      <Fragment>
+        {this.renderHeader()}
+        {this.renderLists()}
+      </Fragment>
+    );
+  };
+
   renderContent = () => {
     return this.props.lists.length > 0
-      ? this.renderLists()
+      ? this.renderDashboard()
       : this.renderInitial();
   };
 
