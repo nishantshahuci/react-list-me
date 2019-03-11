@@ -1,0 +1,29 @@
+.list-field {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+  transition: all 0.2s;
+  color: $color-grey-darker;
+
+  & > * {
+    margin: 0 1rem;
+  }
+
+  &:hover {
+    background-color: rgba($color-grey-lighter, 0.8);
+  }
+
+  &__icon--edit {
+    transition: all 0.2s;
+    &:hover {
+      color: $color-secondary-light;
+    }
+  }
+
+  &__icon--delete {
+    transition: all 0.2s;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
