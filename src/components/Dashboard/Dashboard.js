@@ -54,15 +54,19 @@ class Dashboard extends Component {
     return (
       <div className="dashboard__list">
         {this.props.lists.map(list => (
-          <div key={list.id} className="">
-            <ItemField
-              id={list.id}
-              title={list.title}
-              onItemDelete={this.onListDelete}
-              onItemEdit={this.onListEdit}
-              onItemClick={this.onListClick}
-            />
-            <i className="fas fa-chevron-right fa-2x" />
+          <div key={list.id} className="dashboard__list-item">
+            <div className="dashboard__list-field">
+              <ItemField
+                id={list.id}
+                title={list.title}
+                onItemDelete={this.onListDelete}
+                onItemEdit={this.onListEdit}
+                onItemClick={this.onListClick}
+              />
+            </div>
+            <div className="dashboard__list-icon">
+              <i className="fas fa-chevron-right fa-2x" />
+            </div>
           </div>
         ))}
       </div>

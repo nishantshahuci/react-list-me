@@ -58,5 +58,23 @@
     align-items: stretch;
     width: 100%;
     margin-top: 3rem;
+    color: $color-grey-darker;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: rgba($color-grey-lighter, 0.8);
+    }
+  }
+
+  &__list-field {
+    flex: 1;
+  }
+
+  &__list-icon {
+    margin: 0 1rem;
   }
 }

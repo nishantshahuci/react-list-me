@@ -9,7 +9,12 @@ class ItemField extends Component {
     };
   }
 
-  handleItemDelete = event => {
+  handleItemEdit = () => {
+    const edit = this.state.edit;
+    this.setState({ edit: !edit });
+  };
+
+  handleItemDelete = () => {
     this.props.onItemDelete(this.props.id);
   };
 
@@ -32,10 +37,7 @@ class ItemField extends Component {
     const { edit, title } = this.state;
     return (
       <div className="list-field" onClick={this.handleInputClick}>
-        <div
-          className="list-field__icon--edit"
-          onClick={() => this.setState({ edit: true })}
-        >
+        <div className="list-field__icon--edit" onClick={this.handleItemEdit}>
           <i className="fas fa-pen fa-2x" />
         </div>
         <div
@@ -50,6 +52,7 @@ class ItemField extends Component {
           value={title}
           onChange={this.handleInputChange}
           onBlur={this.handleInputBlur}
+          required
         />
       </div>
     );
