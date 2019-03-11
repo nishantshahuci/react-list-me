@@ -10,22 +10,6 @@
   flex-direction: column;
   align-items: stretch;
 
-  &__header {
-    font-size: 4rem;
-    font-weight: 300;
-    background-image: linear-gradient(
-      to right,
-      $color-primary,
-      $color-secondary
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-  }
-
   &__form {
     margin: 3rem 5rem;
   }

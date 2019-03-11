@@ -1,11 +1,12 @@
 import React from 'react';
 
 import Button from '../Button/Button';
+import Title from '../Title/Title';
 
 const Login = () => {
   return (
     <div className="login">
-      <h1 className="login__header">Login</h1>
+      <Title titleText="Login" />
       <form className="login__form">
         <div className="login__form-field">
           <input
