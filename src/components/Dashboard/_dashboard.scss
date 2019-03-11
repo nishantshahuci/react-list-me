@@ -27,37 +27,12 @@
     color: $color-grey-dark;
   }
 
-  &__initial-button {
-    display: flex;
-    align-items: center;
-    margin-top: 4rem;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 3rem;
-  }
-
-  &__header-title {
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 0.2rem;
-    color: $color-grey-darker;
-  }
-
-  &__header-button {
-    display: flex;
-    align-items: center;
-  }
-
   &__list {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    margin-top: 3rem;
+    margin: 3rem 0;
     color: $color-grey-darker;
   }
 

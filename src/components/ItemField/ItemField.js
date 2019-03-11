@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class ItemField extends Component {
   constructor(props) {
     super(props);
+    this.input = null;
     this.state = {
       edit: false,
       title: this.props.title
@@ -11,7 +12,9 @@ class ItemField extends Component {
 
   handleItemEdit = () => {
     const edit = this.state.edit;
-    this.setState({ edit: !edit });
+    this.setState({ edit: !edit }, () => {
+      this.input.focus();
+    });
   };
 
   handleItemDelete = () => {
@@ -52,6 +55,7 @@ class ItemField extends Component {
           value={title}
           onChange={this.handleInputChange}
           onBlur={this.handleInputBlur}
+          ref={element => (this.input = element)}
           required
         />
       </div>
