@@ -18,6 +18,15 @@ const App = () => {
               { id: 2, title: 'Eggs', complete: false },
               { id: 3, title: 'Cheese', complete: true }
             ]
+          },
+          {
+            id: 2,
+            title: 'Chores',
+            items: [
+              { id: 1, title: 'Clean bathroom', complete: false },
+              { id: 2, title: 'Wash dishes', complete: false },
+              { id: 3, title: 'Do laundry', complete: true }
+            ]
           }
         ]}
       />

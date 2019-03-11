@@ -11,7 +11,7 @@ const Navbar = () => {
         />
       </div>
       <div className="navbar__logo-brand">ListMe</div>
-      <a className="navbar__button">Login</a>
+      <div className="navbar__button">Login</div>
     </nav>
   );
 };

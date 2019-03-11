@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import Button from '../Button/Button';
 import Title from '../Title/Title';
+import ItemField from '../ItemField/ItemField';
 
 class Dashboard extends Component {
   renderInitial = () => {
@@ -37,8 +38,35 @@ class Dashboard extends Component {
     );
   };
 
+  onListDelete = id => {
+    console.log('delete list with id ' + id);
+  };
+
+  onListEdit = (id, title) => {
+    console.log('update list with id ' + id + ' and title ' + title);
+  };
+
+  onListClick = id => {
+    console.log('redirect to list with id ' + id);
+  };
+
   renderLists = () => {
-    return <div>lists</div>;
+    return (
+      <div className="dashboard__list">
+        {this.props.lists.map(list => (
+          <div key={list.id} className="">
+            <ItemField
+              id={list.id}
+              title={list.title}
+              onItemDelete={this.onListDelete}
+              onItemEdit={this.onListEdit}
+              onItemClick={this.onListClick}
+            />
+            <i className="fas fa-chevron-right fa-2x" />
+          </div>
+        ))}
+      </div>
+    );
   };
 
   renderDashboard = () => {
