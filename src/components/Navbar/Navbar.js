@@ -11,6 +11,8 @@ const Navbar = () => {
         />
       </div>
       <div className="navbar__logo-brand">ListMe</div>
+      <div className="navbar__button">Dashboard</div>
+      <div className="navbar__welcome navbar__right">Welcome, Nishant</div>
       <div className="navbar__button">Login</div>
     </nav>
   );

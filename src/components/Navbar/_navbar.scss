@@ -24,9 +24,9 @@
     font-size: 3rem;
     font-weight: 300;
     letter-spacing: 0.2rem;
-    flex: 1;
     display: flex;
     align-items: center;
+    margin-right: 2rem;
   }
 
   &__button {
@@ -77,5 +77,21 @@
     &:focus {
       background-color: $color-white;
     }
+  }
+
+  &__right {
+    margin-left: auto;
+  }
+
+  &__welcome {
+    display: flex;
+    align-items: center;
+    color: $color-grey-lighter;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    margin-right: 2rem;
+    padding: 0 1rem;
+    position: relative;
   }
 }
