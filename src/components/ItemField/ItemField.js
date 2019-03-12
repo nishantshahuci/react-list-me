@@ -30,7 +30,7 @@ class ItemField extends Component {
     this.props.onItemEdit(this.props.id, event.target.value);
   };
 
-  handleInputClick = event => {
+  handleInputClick = () => {
     if (!this.state.edit) {
       this.props.onItemClick(this.props.id);
     }
@@ -39,25 +39,27 @@ class ItemField extends Component {
   render = () => {
     const { edit, title } = this.state;
     return (
-      <div className="list-field" onClick={this.handleInputClick}>
-        <div className="list-field__icon--edit" onClick={this.handleItemEdit}>
+      <div className="item-field">
+        <div className="item-field__icon--edit" onClick={this.handleItemEdit}>
           <i className="fas fa-pen fa-2x" />
         </div>
         <div
-          className="list-field__icon--delete"
+          className="item-field__icon--delete"
           onClick={this.handleItemDelete}
         >
           <i className="fas fa-trash fa-2x" />
         </div>
-        <input
-          className="list-field__input"
-          disabled={!edit}
-          value={title}
-          onChange={this.handleInputChange}
-          onBlur={this.handleInputBlur}
-          ref={element => (this.input = element)}
-          required
-        />
+        <div className="item-field__input-div" onClick={this.handleInputClick}>
+          <input
+            className="item-field__input"
+            disabled={!edit}
+            value={title}
+            onChange={this.handleInputChange}
+            onBlur={this.handleInputBlur}
+            ref={element => (this.input = element)}
+            required
+          />
+        </div>
       </div>
     );
   };

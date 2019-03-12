@@ -1,6 +1,7 @@
-.list-field {
+.item-field {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 1.5rem 0;
   transition: all 0.2s;
 
@@ -20,6 +21,10 @@
     &:hover {
       color: $color-primary;
     }
+  }
+
+  &__input-div {
+    flex: 1;
   }
 
   &__input {
