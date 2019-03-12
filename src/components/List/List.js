@@ -4,18 +4,17 @@ import Title from '../Title/Title';
 import ItemField from '../ItemField/ItemField';
 
 class List extends Component {
-
   onItemComplete = id => {
     console.log('mark item with id ' + id + ' complete');
-  }
+  };
 
   onItemDelete = id => {
     console.log('delete item with id ' + id);
-  }
+  };
 
   onItemEdit = (id, title) => {
     console.log('edit item with id ' + id + ' and title ' + title);
-  }
+  };
 
   renderComplete = complete => {
     if (complete) {

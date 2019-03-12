@@ -36,6 +36,7 @@
     width: 100%;
     padding: 0.5rem;
     color: $color-grey-dark;
+    cursor: pointer;
     transition: all 0.3s;
 
     &:not([disabled]) {
