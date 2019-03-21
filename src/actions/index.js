@@ -10,7 +10,7 @@ export const signIn = (email, password) => async dispatch => {
       payload: response.data
     });
     // route user to root page
-    history.push('/');
+    history.push('/dashboard');
   } catch (err) {
     dispatch({
       type: SIGN_IN,

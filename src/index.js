@@ -9,8 +9,16 @@ import App from './components/App/App';
 
 import './index.scss';
 
+const state = localStorage.getItem('reduxState')
+  ? JSON.parse(localStorage.getItem('reduxState'))
+  : {};
+const store = createStore(reducers, state, applyMiddleware(thunk));
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+});
+
 ReactDOM.render(
-  <Provider store={createStore(reducers, applyMiddleware(thunk))}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.querySelector('#root')
