@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import Navbar from '../Navbar/Navbar';
 import Header from '../Header/Header';
@@ -18,6 +18,11 @@ const App = () => {
           <Route path="/login" exact component={Login} />
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/list/:id" exact component={List} />
+          <Route
+            component={() => {
+              return <Redirect to="/" />;
+            }}
+          />
         </Switch>
       </div>
     </Router>
