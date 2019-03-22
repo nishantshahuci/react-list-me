@@ -21,6 +21,7 @@ export const signIn = (email, password) => async dispatch => {
 };
 
 export const signOut = () => {
+  history.push('/');
   return {
     type: SIGN_OUT
   };
