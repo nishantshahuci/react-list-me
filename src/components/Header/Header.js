@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import Button from '../Button/Button';
 
@@ -14,13 +14,13 @@ class Header extends Component {
             Your first step to organization
           </span>
         </h1>
-        <div className="header__button">
+        <Link to="/login" className="header__button">
           <Button
             btnClasses="btn btn--lighter btn--hover-white"
             btnText="Get started"
             btnTextClasses="btn--text-gradient"
           />
-        </div>
+        </Link>
       </div>
     );
   };
