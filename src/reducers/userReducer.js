@@ -9,7 +9,6 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_IN: {
-      console.log('signin: ', action);
       if (action.error) return { ...state, isSignedIn: null };
       else
         return {
