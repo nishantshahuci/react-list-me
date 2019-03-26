@@ -14,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
         return {
           ...state,
           isSignedIn: true,
-          user: action.payload.user,
+          profile: action.payload.user,
           token: action.payload.token
         };
     }

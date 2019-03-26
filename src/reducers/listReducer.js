@@ -24,7 +24,7 @@ export default (state = {}, action) => {
     case DELETE_LIST:
       return Object.keys(state).reduce(
         (acc, cur) =>
-          cur.id === action.payload.id ? acc : { ...acc, [cur]: state[cur] },
+          cur.id === action.payload ? acc : { ...acc, [cur]: state[cur] },
         {}
       );
     case ADD_ITEM:
@@ -32,7 +32,7 @@ export default (state = {}, action) => {
         ...state,
         [action.payload.list]: {
           ...state[action.payload.list],
-          items: concat(state[action.payload.list].items, action.payload)
+          items: [...state[action.payload.list].items, action.payload]
         }
       };
     case EDIT_ITEM:
@@ -48,10 +48,10 @@ export default (state = {}, action) => {
     case DELETE_ITEM:
       return {
         ...state,
-        [action.payload.list]: {
-          ...state[action.payload.list],
-          items: state[action.payload.list].items.filter(
-            item => item.id !== action.payload.id
+        [action.payload.listId]: {
+          ...state[action.payload.listId],
+          items: state[action.payload.listId].items.filter(
+            item => item.id !== action.payload.itemId
           )
         }
       };
