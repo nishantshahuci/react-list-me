@@ -7,7 +7,7 @@ import {
   ADD_ITEM,
   EDIT_ITEM,
   DELETE_ITEM
-} from './types';
+} from '../actions/types';
 
 export default (state = {}, action) => {
   if (action.error) return state;
@@ -20,7 +20,10 @@ export default (state = {}, action) => {
         [action.payload.id]: action.payload
       };
     case FETCH_LISTS:
-      return {...state, ...action.payload.reduce((acc, cur) => ({...acc, [cur.id]: cur}), {})};
+      return {
+        ...state,
+        ...action.payload.reduce((acc, cur) => ({ ...acc, [cur.id]: cur }), {})
+      };
     case DELETE_LIST:
       return Object.keys(state).reduce(
         (acc, cur) =>

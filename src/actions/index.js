@@ -77,7 +77,7 @@ export const fetchList = id => async (dispatch, getState) => {
   }
 };
 
-export const fetchLists = id => async (dispatch, getState) => {
+export const fetchLists = () => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
     const response = await api.get(`/list/details`, {
@@ -119,7 +119,7 @@ export const editList = (id, title) => async (dispatch, getState) => {
 export const deleteList = id => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
-    const response = await api.delete(`/list/${id}`, {
+    await api.delete(`/list/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     dispatch({
@@ -194,7 +194,7 @@ export const editItem = (listId, itemId, title, complete) => async (
 export const deleteItem = (listId, itemId) => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
-    const response = await api.delete(`/item/${itemId}`, {
+    await api.delete(`/item/${itemId}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     dispatch({

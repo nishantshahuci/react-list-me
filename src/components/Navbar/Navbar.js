@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { signOut } from '../../actions/index';
+import { signOut } from '../../actions';
 
 class Navbar extends Component {
   renderLinks = () => {

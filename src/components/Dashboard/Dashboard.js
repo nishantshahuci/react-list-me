@@ -1,10 +1,20 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Button from '../Button/Button';
 import Title from '../Title/Title';
 import ItemField from '../ItemField/ItemField';
 
+import { fetchLists } from '../../actions';
+
 class Dashboard extends Component {
+  componentDidMount = () => {
+    if (this.props.isSignedIn) {
+      this.props.fetchLists();
+    }
+  };
+
   renderInitial = () => {
     return (
       <Fragment>
@@ -57,7 +67,7 @@ class Dashboard extends Component {
       : this.renderInitial();
   };
 
-  render = () => {
+  renderComponent = () => {
     return (
       <div className="dashboard">
         <div className="dashboard__container">
@@ -72,6 +82,24 @@ class Dashboard extends Component {
       </div>
     );
   };
+
+  render = () => {
+    if (this.props.isSignedIn) {
+      return this.renderComponent();
+    } else {
+      return <Redirect to="/login" />;
+    }
+  };
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    isSignedIn: state.user.isSignedIn,
+    lists: Object.values(state.lists)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchLists }
+)(Dashboard);
