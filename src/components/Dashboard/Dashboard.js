@@ -7,6 +7,7 @@ import Title from '../Title/Title';
 import ItemField from '../ItemField/ItemField';
 
 import { fetchLists } from '../../actions';
+import history from '../../history';
 
 class Dashboard extends Component {
   componentDidMount = () => {
@@ -35,7 +36,7 @@ class Dashboard extends Component {
   };
 
   onListClick = id => {
-    console.log('redirect to list with id ' + id);
+    history.push(`/list/${id}`);
   };
 
   renderLists = () => {

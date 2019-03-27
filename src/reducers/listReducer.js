@@ -22,7 +22,7 @@ export default (state = {}, action) => {
     case FETCH_LISTS:
       return {
         ...state,
-        ...action.payload.reduce((acc, cur) => ({ ...acc, [cur.id]: cur }), {})
+        ...action.payload
       };
     case DELETE_LIST:
       return Object.keys(state).reduce(

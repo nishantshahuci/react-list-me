@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Title from '../Title/Title';
 import ItemField from '../ItemField/ItemField';
 
+import { fetchList } from '../../actions';
+
 class List extends Component {
+  componentDidMount = () => {
+    if (this.props.isSignedIn) {
+      this.props.fetchList(this.props.match.params.id);
+    }
+  };
+
   onItemComplete = id => {
     console.log('mark item with id ' + id + ' complete');
   };
@@ -47,7 +57,7 @@ class List extends Component {
     );
   };
 
-  render = () => {
+  renderComponent = () => {
     return (
       <div className="list">
         <div className="list__container">
@@ -57,6 +67,25 @@ class List extends Component {
       </div>
     );
   };
+
+  render = () => {
+    if (this.props.isSignedIn)
+      if (this.props.owner === this.props.list.owner)
+        return this.renderComponent();
+      else return <Redirect to="/dashboard" />;
+    else return <Redirect to="/login" />;
+  };
 }
 
-export default List;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isSignedIn: state.user.isSignedIn,
+    owner: state.user.email,
+    list: state.lists[ownProps.match.params.id]
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchList }
+)(List);
