@@ -1,4 +1,5 @@
 import {
+  SIGN_OUT,
   CREATE_LIST,
   FETCH_LIST,
   FETCH_LISTS,
@@ -10,7 +11,10 @@ import {
 } from '../actions/types';
 
 export default (state = {}, action) => {
-  if (action.error) return state;
+  if (action.error)
+    if (action.payload.status === 401) return {};
+    else return state;
+
   switch (action.type) {
     case CREATE_LIST:
     case EDIT_LIST:
@@ -58,6 +62,8 @@ export default (state = {}, action) => {
           )
         }
       };
+    case SIGN_OUT:
+      return {};
     default:
       return state;
   }
