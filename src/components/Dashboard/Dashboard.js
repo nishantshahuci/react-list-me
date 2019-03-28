@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import Title from '../Title/Title';
 import ItemField from '../ItemField/ItemField';
 
-import { fetchLists } from '../../actions';
+import { fetchLists, createList, editList, deleteList } from '../../actions';
 import history from '../../history';
 
 class Dashboard extends Component {
@@ -28,15 +28,19 @@ class Dashboard extends Component {
   };
 
   onListDelete = id => {
-    console.log('delete list with id ' + id);
+    this.props.deleteList(id);
   };
 
   onListEdit = (id, title) => {
-    console.log('update list with id ' + id + ' and title ' + title);
+    this.props.editList(id, title);
   };
 
   onListClick = id => {
     history.push(`/list/${id}`);
+  };
+
+  onCreateClick = () => {
+    this.props.createList('New List');
   };
 
   renderLists = () => {
@@ -78,6 +82,7 @@ class Dashboard extends Component {
             btnClasses="btn btn--lighter btn--hover-gradient"
             btnText="Create"
             btnTextClasses="btn--text-gradient"
+            onClick={this.onCreateClick}
           />
         </div>
       </div>
@@ -102,5 +107,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchLists }
+  { fetchLists, createList, editList, deleteList }
 )(Dashboard);

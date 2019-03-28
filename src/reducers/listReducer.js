@@ -31,7 +31,9 @@ export default (state = {}, action) => {
     case DELETE_LIST:
       return Object.keys(state).reduce(
         (acc, cur) =>
-          cur.id === action.payload ? acc : { ...acc, [cur]: state[cur] },
+          parseInt(cur) === action.payload
+            ? acc
+            : { ...acc, [cur]: state[cur] },
         {}
       );
     case ADD_ITEM:
