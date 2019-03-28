@@ -41,10 +41,16 @@ export const signOut = () => {
 export const createList = title => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
-    const response = await api.post('/list', {
-      headers: { Authorization: `Bearer ${token}` },
-      data: { title }
-    });
+    const response = await api.post(
+      '/list',
+      { title },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
     dispatch({
       type: CREATE_LIST,
       payload: response.data.list
@@ -62,7 +68,10 @@ export const fetchList = id => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
     const response = await api.get(`/list/${id}`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
     });
     dispatch({
       type: FETCH_LIST,
@@ -81,7 +90,10 @@ export const fetchLists = () => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
     const response = await api.get(`/list/details`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
     });
     dispatch({
       type: FETCH_LISTS,
@@ -99,10 +111,16 @@ export const fetchLists = () => async (dispatch, getState) => {
 export const editList = (id, title) => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
-    const response = await api.patch(`/list/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-      data: { title }
-    });
+    const response = await api.patch(
+      `/list/${id}`,
+      { title },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
     dispatch({
       type: EDIT_LIST,
       payload: response.data.list
@@ -120,7 +138,10 @@ export const deleteList = id => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
     await api.delete(`/list/${id}`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
     });
     dispatch({
       type: DELETE_LIST,
@@ -141,10 +162,16 @@ export const addItem = (listId, title, complete) => async (
 ) => {
   const { token } = getState().user;
   try {
-    const response = await api.post('/item', {
-      headers: { Authorization: `Bearer ${token}` },
-      data: { listId, title, complete }
-    });
+    const response = await api.post(
+      '/item',
+      { listId, title, complete },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
     dispatch({
       type: ADD_ITEM,
       payload: {
@@ -169,10 +196,16 @@ export const editItem = (listId, itemId, title, complete) => async (
 ) => {
   const { token } = getState().user;
   try {
-    const response = await api.post(`/item/${itemId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-      data: { title, complete }
-    });
+    const response = await api.post(
+      `/item/${itemId}`,
+      { title, complete },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
     dispatch({
       type: EDIT_ITEM,
       payload: {
@@ -195,7 +228,10 @@ export const deleteItem = (listId, itemId) => async (dispatch, getState) => {
   const { token } = getState().user;
   try {
     await api.delete(`/item/${itemId}`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
     });
     dispatch({
       type: DELETE_ITEM,
