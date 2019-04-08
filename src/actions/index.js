@@ -175,9 +175,9 @@ export const addItem = (listId, title, complete) => async (
     dispatch({
       type: ADD_ITEM,
       payload: {
-        itemId: response.data.id,
-        title: response.data.title,
-        complete: response.data.complete,
+        itemId: response.data.item.id,
+        title: response.data.item.title,
+        complete: response.data.item.complete,
         listId
       }
     });
@@ -196,7 +196,7 @@ export const editItem = (listId, itemId, title, complete) => async (
 ) => {
   const { token } = getState().user;
   try {
-    const response = await api.post(
+    const response = await api.patch(
       `/item/${itemId}`,
       { title, complete },
       {
@@ -209,9 +209,9 @@ export const editItem = (listId, itemId, title, complete) => async (
     dispatch({
       type: EDIT_ITEM,
       payload: {
-        itemId: response.data.id,
-        title: response.data.title,
-        complete: response.data.complete,
+        itemId: response.data.item.id,
+        title: response.data.item.title,
+        complete: response.data.item.complete,
         listId
       }
     });

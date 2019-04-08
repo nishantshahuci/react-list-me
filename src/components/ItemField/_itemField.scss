@@ -10,6 +10,7 @@
   }
 
   &__icon--edit {
+    cursor: pointer;
     transition: all 0.2s;
     &:hover {
       color: $color-secondary-light;
@@ -17,6 +18,7 @@
   }
 
   &__icon--delete {
+    cursor: pointer;
     transition: all 0.2s;
     &:hover {
       color: $color-primary;

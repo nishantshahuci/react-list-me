@@ -39,29 +39,46 @@ export default (state = {}, action) => {
     case ADD_ITEM:
       return {
         ...state,
-        [action.payload.list]: {
-          ...state[action.payload.list],
-          items: [...state[action.payload.list].items, action.payload]
+        [action.payload.listId]: {
+          ...state[action.payload.listId],
+          items: state[action.payload.listId].items
+            .concat([
+              {
+                id: action.payload.itemId,
+                title: action.payload.title,
+                complete: action.payload.complete
+              }
+            ])
+            .sort((a, b) => a.itemId - b.itemId)
         }
       };
-    case EDIT_ITEM:
+    case EDIT_ITEM: {
       return {
         ...state,
-        [action.payload.list]: {
-          ...state[action.payload.list],
-          items: state[action.payload.list].items.map(item =>
-            item.id === action.payload.id ? action.payload : item
-          )
+        [action.payload.listId]: {
+          ...state[action.payload.listId],
+          items: state[action.payload.listId].items
+            .map(item =>
+              item.id === action.payload.itemId
+                ? {
+                    ...item,
+                    title: action.payload.title,
+                    complete: action.payload.complete
+                  }
+                : item
+            )
+            .sort((a, b) => a.itemId - b.itemId)
         }
       };
+    }
     case DELETE_ITEM:
       return {
         ...state,
         [action.payload.listId]: {
           ...state[action.payload.listId],
-          items: state[action.payload.listId].items.filter(
-            item => item.id !== action.payload.itemId
-          )
+          items: state[action.payload.listId].items
+            .filter(item => item.id !== action.payload.itemId)
+            .sort((a, b) => a.itemId - b.itemId)
         }
       };
     case SIGN_OUT:

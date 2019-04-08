@@ -4,8 +4,9 @@ import { Redirect } from 'react-router-dom';
 
 import Title from '../Title/Title';
 import ItemField from '../ItemField/ItemField';
+import Button from '../Button/Button';
 
-import { fetchList } from '../../actions';
+import { fetchList, addItem, editItem, deleteItem } from '../../actions';
 
 class List extends Component {
   componentDidMount = () => {
@@ -14,16 +15,16 @@ class List extends Component {
     }
   };
 
-  onItemComplete = id => {
-    console.log('mark item with id ' + id + ' complete');
+  onItemEditComplete = (id, title, complete) => {
+    this.props.editItem(this.props.list.id, id, title, complete);
   };
 
   onItemDelete = id => {
-    console.log('delete item with id ' + id);
+    this.props.deleteItem(this.props.list.id, id);
   };
 
-  onItemEdit = (id, title) => {
-    console.log('edit item with id ' + id + ' and title ' + title);
+  onAddClick = () => {
+    this.props.addItem(this.props.list.id, 'New Item', 'false');
   };
 
   renderComplete = complete => {
@@ -46,8 +47,12 @@ class List extends Component {
                 id={item.id}
                 title={item.title}
                 onItemDelete={this.onItemDelete}
-                onItemEdit={this.onItemEdit}
-                onItemClick={this.onItemComplete}
+                onItemEdit={(id, title) =>
+                  this.onItemEditComplete(id, title, item.complete)
+                }
+                onItemClick={id =>
+                  this.onItemEditComplete(id, item.title, !item.complete)
+                }
               />
             </div>
             {this.renderComplete(item.complete)}
@@ -63,6 +68,12 @@ class List extends Component {
         <div className="list__container">
           <Title titleText={this.props.list.title} />
           {this.renderList()}
+          <Button
+            btnClasses="btn btn--lighter btn--hover-gradient"
+            btnText="Add"
+            btnTextClasses="btn--text-gradient"
+            onClick={this.onAddClick}
+          />
         </div>
       </div>
     );
@@ -75,6 +86,7 @@ class List extends Component {
       else return <Redirect to="/dashboard" />;
     else return <Redirect to="/login" />;
   };
+
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -87,5 +99,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { fetchList }
+  { fetchList, addItem, editItem, deleteItem }
 )(List);
