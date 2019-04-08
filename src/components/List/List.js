@@ -81,12 +81,11 @@ class List extends Component {
 
   render = () => {
     if (this.props.isSignedIn)
-      if (this.props.owner === this.props.list.owner)
+      if (this.props.list && this.props.owner === this.props.list.owner)
         return this.renderComponent();
       else return <Redirect to="/dashboard" />;
     else return <Redirect to="/login" />;
   };
-
 }
 
 const mapStateToProps = (state, ownProps) => {
