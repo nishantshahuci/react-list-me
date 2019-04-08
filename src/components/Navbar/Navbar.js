@@ -12,7 +12,9 @@ class Navbar extends Component {
           <Link to="/dashboard" className="navbar__button">
             Dashboard
           </Link>
-          <div className="navbar__welcome navbar__right">Welcome, Nishant</div>
+          <div className="navbar__welcome navbar__right">
+            Welcome, {this.props.user.name}
+          </div>
           <div className="navbar__button" onClick={this.props.signOut}>
             Logout
           </div>
@@ -47,7 +49,7 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = state => {
-  return { isSignedIn: state.user.isSignedIn };
+  return { isSignedIn: state.user.isSignedIn, user: state.user.user };
 };
 
 export default connect(

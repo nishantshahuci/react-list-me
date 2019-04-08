@@ -2,42 +2,50 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { signIn } from '../../actions';
 import Button from '../Button/Button';
 import Title from '../Title/Title';
 
-import history from '../../history';
+import { registerUser } from '../../actions';
 
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      name: '',
       email: '',
       password: ''
     };
   }
 
-  onRegisterClick = e => {
-    e.preventDefault();
-    history.push('/register');
-  };
-
   onFormSubmit = e => {
     e.preventDefault();
-    const { email, password } = this.state;
-    this.props.signIn(email, password);
+    const { name, email, password } = this.state;
+    this.props.registerUser(name, email, password);
   };
 
   renderComponent = () => {
     return (
-      <div className="login">
-        <div className="login__container">
-          <Title titleText="Login" />
-          <form className="login__form" onSubmit={this.onFormSubmit}>
-            <div className="login__form-field">
+      <div className="register">
+        <div className="register__container">
+          <Title titleText="Register" />
+          <form className="register__form" onSubmit={this.onFormSubmit}>
+            <div className="register__form-field">
               <input
-                className="login__form-input"
+                className="register__form-input"
+                type="text"
+                placeholder="Name"
+                value={this.state.name}
+                onChange={e => {
+                  this.setState({ name: e.target.value });
+                }}
+                required
+              />
+              <div className="register__form-label">Email</div>
+            </div>
+            <div className="register__form-field">
+              <input
+                className="register__form-input"
                 type="email"
                 placeholder="Email"
                 value={this.state.email}
@@ -46,11 +54,11 @@ class Login extends Component {
                 }}
                 required
               />
-              <div className="login__form-label">Email</div>
+              <div className="register__form-label">Email</div>
             </div>
-            <div className="login__form-field">
+            <div className="register__form-field">
               <input
-                className="login__form-input"
+                className="register__form-input"
                 type="password"
                 placeholder="Password"
                 value={this.state.password}
@@ -59,14 +67,9 @@ class Login extends Component {
                 }}
                 required
               />
-              <div className="login__form-label">Password</div>
+              <div className="register__form-label">Password</div>
             </div>
-            <div className="login__links">
-              <Button
-                btnClasses="btn btn--link"
-                btnText="Need an account?"
-                onClick={this.onRegisterClick}
-              />
+            <div className="register__links">
               <Button
                 btnClasses="btn btn--lighter btn--hover-gradient"
                 btnText="Submit"
@@ -80,7 +83,7 @@ class Login extends Component {
   };
 
   render = () => {
-    if (this.props.isSignedIn === true) {
+    if (this.props.isSignedIn) {
       return <Redirect to="/dashboard" />;
     } else {
       return this.renderComponent();
@@ -94,5 +97,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { signIn }
-)(Login);
+  { registerUser }
+)(Register);

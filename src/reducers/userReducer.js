@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_OUT } from '../actions/types';
+import { SIGN_IN, SIGN_OUT, REGISTER } from '../actions/types';
 
 const INITIAL_STATE = {
   isSignedIn: false,
@@ -19,6 +19,8 @@ export default (state = INITIAL_STATE, action) => {
         token: action.payload.token
       };
     case SIGN_OUT:
+      return INITIAL_STATE;
+    case REGISTER:
       return INITIAL_STATE;
     default:
       return state;

@@ -4,6 +4,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
+import Register from '../Register/Register';
 import Dashboard from '../Dashboard/Dashboard';
 import List from '../List/List';
 import history from '../../history';
@@ -16,6 +17,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Header} />
           <Route path="/login" exact component={Login} />
+          <Route path="/register" exact component={Register} />
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/list/:id" exact component={List} />
           <Route

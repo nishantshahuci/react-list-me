@@ -3,6 +3,7 @@ import history from '../history';
 import {
   SIGN_IN,
   SIGN_OUT,
+  REGISTER,
   CREATE_LIST,
   FETCH_LIST,
   FETCH_LISTS,
@@ -36,6 +37,24 @@ export const signOut = () => {
   return {
     type: SIGN_OUT
   };
+};
+
+export const registerUser = (name, email, password) => async dispatch => {
+  try {
+    const response = await api.post('/user', { name, email, password });
+    dispatch({
+      type: REGISTER,
+      payload: response.data
+    });
+    // route user to login page
+    history.push('/login');
+  } catch (err) {
+    dispatch({
+      type: REGISTER,
+      error: true,
+      payload: err.response
+    });
+  }
 };
 
 export const createList = title => async (dispatch, getState) => {
